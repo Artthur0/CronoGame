@@ -43,10 +43,10 @@ fun TopBar(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewSmallTopAppBarExample() {
+fun PreviewTopBar() {
     TopBar(
         title = "CronoGame",
-        buttonIcon = Icons.Default.Home,
+        buttonIcon = Icons.Default.ArrowBack,
         onButtonClick = {}
     )
 }
