@@ -1,5 +1,6 @@
 package com.example.cronogame.components
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
@@ -23,18 +24,22 @@ fun TopBar(
     //modifier: Modifier,
     title: String,
     buttonIcon: ImageVector,
-    onButtonClick: () -> Unit)
+    onButtonClick: () -> Unit,
+    backgroundColor: Color = Color(0xff73459f),
+    iconColor: Color = Color.White)
     {
         TopAppBar(
-            title = { Text(text = title) },
+            title = { Text(text = title, color = iconColor) },
             navigationIcon = {
                 IconButton(onClick = onButtonClick) {
-                    Icon(imageVector = buttonIcon, contentDescription = null, tint = Color.White)
+                    Icon(imageVector = buttonIcon,
+                        contentDescription = null,
+                        tint = iconColor,
+                        modifier = Modifier.size(40.dp))
                 }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    titleContentColor = Color.White,
-                    containerColor = MaterialTheme.colorScheme.primary
+                    containerColor = backgroundColor
                 )
             )
 
@@ -47,6 +52,8 @@ fun PreviewTopBar() {
     TopBar(
         title = "CronoGame",
         buttonIcon = Icons.Default.ArrowBack,
-        onButtonClick = {}
+        onButtonClick = {},
+        backgroundColor = Color(0xff73459f),
+        iconColor = Color.White
     )
 }
