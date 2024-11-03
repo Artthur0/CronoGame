@@ -19,25 +19,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.cronogame.R
 import com.example.cronogame.components.BottomBar
 import com.example.cronogame.components.Button
 import com.example.cronogame.components.TopBar
+import com.example.cronogame.navigation.AppScreens
 
 @Composable
-fun Home(
-    title: String,
-    onTopBarButtonClick: () -> Unit,
-    onBottomBarItemClick: () -> Unit,
-    onCategoryButtonClick: () -> Unit
-) {
+fun Home(navController: NavController) {
     Scaffold(
-
         topBar = {
             TopBar(
-                title = title,
+                title = "",
                 buttonIcon = Icons.Default.Info,
-                onButtonClick = onTopBarButtonClick,
+                onButtonClick = {navController.navigate(AppScreens.HelpScreen.route)},
                 backgroundColor = Color.White,
                 iconColor = Color(0xff73459f)
             )
@@ -65,7 +61,7 @@ fun Home(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Button(text = "PLAY",
-                    onClick = {  },
+                    onClick = {navController.navigate(AppScreens.HelpScreen.route)},
                     backgroundColor = Color(0xffFFC900),
                     textColor = Color.White)
 
@@ -74,16 +70,5 @@ fun Home(
 
             }
         }
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewScreen() {
-    Home(
-        title = "",
-        onTopBarButtonClick = {},
-        onBottomBarItemClick = {},
-        onCategoryButtonClick = {}
     )
 }
