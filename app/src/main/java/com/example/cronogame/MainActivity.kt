@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavigation() // Usar la función AppNavigation para gestionar las rutas
+                    AppNavigation()
                 }
             }
         }
