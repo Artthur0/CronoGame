@@ -61,7 +61,7 @@ fun Home(navController: NavController) {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Button(text = "PLAY",
-                    onClick = {navController.navigate(AppScreens.HelpScreen.route)},
+                    onClick = {navController.navigate(AppScreens.ResultScreen.route)},
                     backgroundColor = Color(0xffFFC900),
                     textColor = Color.White)
 
