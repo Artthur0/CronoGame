@@ -16,7 +16,6 @@ import androidx.navigation.NavController
 import com.example.cronogame.navigation.AppScreens
 import com.example.cronogame.components.Button
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ResultScreen(navController: NavController, score: Int) {
     Scaffold(
