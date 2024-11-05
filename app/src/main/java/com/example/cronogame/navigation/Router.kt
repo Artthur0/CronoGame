@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cronogame.screens.Home
 import com.example.cronogame.screens.HowToPlayScreen
 import com.example.cronogame.screens.ResultScreen
+import com.example.cronogame.screens.GameScreen
 
 @Composable
 fun AppNavigation(){
@@ -20,6 +21,9 @@ fun AppNavigation(){
         }
         composable(route= AppScreens.ResultScreen.route){
             ResultScreen(navController, 2) //Reemplazar con logica para score
+        }
+        composable(route= AppScreens.GameScreen.route) {
+            GameScreen(navController)
         }
 
     }
