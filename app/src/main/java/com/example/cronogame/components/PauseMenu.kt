@@ -1,6 +1,5 @@
 package com.example.cronogame.components
 
-
 import android.app.AlertDialog
 import android.app.Dialog
 import android.app.DialogFragment
