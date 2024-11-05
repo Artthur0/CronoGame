@@ -24,7 +24,7 @@ class StartGameDialogFragment : DialogFragment() {
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 }
-
+/*
 class OldXmlActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,4 +32,4 @@ class OldXmlActivity : AppCompatActivity() {
 
         StartGameDialogFragment().show(supportFragmentManager, "GAME_DIALOG")
     }
-}
+}*/
