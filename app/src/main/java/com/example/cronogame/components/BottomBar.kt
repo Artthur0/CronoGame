@@ -22,9 +22,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.cronogame.navigation.AppScreens
+import com.example.cronogame.navigation.AppNavigation
 
 @Composable
-fun BottomBar(
+fun BottomBar(navController:NavController
 ){
     BottomAppBar (
         containerColor = Color.White,
@@ -56,20 +59,12 @@ fun BottomBar(
             }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.clickable {  }
+                modifier = Modifier.clickable {navController.navigate(AppScreens.ResultScreen.route)}
             ) {
                 Icon(Icons.Default.CheckCircle, contentDescription = "Perfil" )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text("Historial", fontSize = 12.sp, fontWeight = FontWeight.Bold)
             }
-
-
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    BottomBar()
 }

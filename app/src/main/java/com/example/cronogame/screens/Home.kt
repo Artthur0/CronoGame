@@ -39,9 +39,8 @@ fun Home(navController: NavController) {
             )
         },
         bottomBar = {
-            BottomBar()
-        },
-        content = { innerPadding ->
+            BottomBar(navController = navController) }
+            ) { innerPadding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -61,7 +60,7 @@ fun Home(navController: NavController) {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Button(text = "PLAY",
-                    onClick = {navController.navigate(AppScreens.ResultScreen.route)},
+                    onClick = {navController.navigate(AppScreens.GameScreen.route)},
                     backgroundColor = Color(0xffFFC900),
                     textColor = Color.White)
 
@@ -70,5 +69,4 @@ fun Home(navController: NavController) {
 
             }
         }
-    )
 }
