@@ -8,6 +8,7 @@ import com.example.cronogame.screens.Home
 import com.example.cronogame.screens.HowToPlayScreen
 import com.example.cronogame.screens.ResultScreen
 import com.example.cronogame.screens.GameScreen
+import com.example.cronogame.screens.SelectCategory
 
 @Composable
 fun AppNavigation(){
@@ -24,6 +25,9 @@ fun AppNavigation(){
         }
         composable(route= AppScreens.GameScreen.route) {
             GameScreen(navController)
+        }
+        composable(route = AppScreens.SelectCategory.route){
+            SelectCategory(navController)
         }
 
     }

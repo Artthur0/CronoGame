@@ -16,12 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.cronogame.components.Category
 import com.example.cronogame.components.TopBar
 
 
 @Composable
-fun SelectCategory() {
+fun SelectCategory(navController: NavController) {
     val categories =
         listOf("Categoría 1", "Categoría 2", "Categoría 3", "Categoría 4", "Categoría 5")
     Scaffold(
@@ -61,10 +62,11 @@ fun SelectCategory() {
 
     }
 }
-
+/*
 @Preview(showBackground = true)
 @Composable
 fun PreviewSelectCategory() {
     SelectCategory()
 
 }
+*/

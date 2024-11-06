@@ -7,7 +7,7 @@ sealed class AppScreens (
     object HomeScreen: AppScreens("Home")
     object HelpScreen: AppScreens("HowToPlay.kt")
     object ResultScreen: AppScreens("Result")
-    object CategoryScreen: AppScreens("SelectCategory")
+    object SelectCategory: AppScreens("SelectCategory")
 
 
 }
