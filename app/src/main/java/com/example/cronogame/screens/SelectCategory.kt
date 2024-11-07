@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cronogame.components.Category
 import com.example.cronogame.components.TopBar
+import com.example.cronogame.navigation.AppScreens
 
 
 @Composable
@@ -49,7 +50,7 @@ fun SelectCategory(navController: NavController) {
             items(categories) { category ->
                 Category(
                     text = category,
-                    onClick = { /* Acción de categoría */ },
+                    onClick = { navController.navigate(AppScreens.GameScreen.route)},
                     backgroundColor = Color(0xffFFC900),
                     textColor = Color.White
 
