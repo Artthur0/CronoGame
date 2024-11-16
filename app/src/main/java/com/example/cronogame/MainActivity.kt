@@ -10,6 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.cronogame.Database.AppDatabase
+import com.example.cronogame.Database.HistoricalDataViewModel
+import com.example.cronogame.Database.Repositories.CategoryRepository
+import com.example.cronogame.Database.Repositories.HistoricalEventRepository
+import com.example.cronogame.Database.insertInitialData
 import com.example.cronogame.navigation.AppNavigation
 import com.example.cronogame.navigation.AppScreens
 import com.example.cronogame.screens.Home
@@ -18,6 +23,13 @@ import com.example.cronogame.ui.theme.CronoGameTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val database = AppDatabase.getInstance(applicationContext)
+        val categoryRepository = CategoryRepository(database.categoryDao())
+        val eventRepository = HistoricalEventRepository(database.historicalEventDao())
+        val viewModel = HistoricalDataViewModel(categoryRepository, eventRepository)
+        insertInitialData(viewModel)
+
         setContent {
             CronoGameTheme {
                 Surface(
