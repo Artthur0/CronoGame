@@ -1,11 +1,11 @@
-package com.example.cronogame.Database
+package com.example.cronogame.database
 
-import HistoricalEvent
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cronogame.Database.Repositories.CategoryRepository
-import com.example.cronogame.Database.Repositories.HistoricalEventRepository
-import com.example.cronogame.Database.entities.Category
+import com.example.cronogame.database.Repositories.CategoryRepository
+import com.example.cronogame.database.Repositories.HistoricalEventRepository
+import com.example.cronogame.database.entities.Category
+import com.example.cronogame.database.entities.HistoricalEvent
 import kotlinx.coroutines.launch
 
 class HistoricalDataViewModel(

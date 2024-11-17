@@ -1,7 +1,7 @@
-package com.example.cronogame.Database.Repositories
+package com.example.cronogame.database.Repositories
 
-import HistoricalEvent
-import com.example.cronogame.Database.dao.HistoricalEventDao
+import com.example.cronogame.database.dao.HistoricalEventDao
+import com.example.cronogame.database.entities.HistoricalEvent
 
 class HistoricalEventRepository(private val eventDao: HistoricalEventDao) {
     suspend fun insertEvent(event: HistoricalEvent) {

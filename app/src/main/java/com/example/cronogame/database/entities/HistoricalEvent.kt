@@ -1,3 +1,5 @@
+package com.example.cronogame.database.entities
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

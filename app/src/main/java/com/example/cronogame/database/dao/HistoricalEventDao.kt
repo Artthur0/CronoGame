@@ -1,10 +1,10 @@
-package com.example.cronogame.Database.dao
+package com.example.cronogame.database.dao
 
-import HistoricalEvent
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.cronogame.database.entities.HistoricalEvent
 
 @Dao
 interface HistoricalEventDao {

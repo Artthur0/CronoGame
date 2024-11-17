@@ -1,7 +1,7 @@
-package com.example.cronogame.Database
+package com.example.cronogame.database
 
-import HistoricalEvent
-import com.example.cronogame.Database.entities.Category
+import com.example.cronogame.database.entities.Category
+import com.example.cronogame.database.entities.HistoricalEvent
 
 fun insertInitialData(viewModel: HistoricalDataViewModel) {
     viewModel.insertCategory(Category(name = "Historia general"))

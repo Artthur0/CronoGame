@@ -1,7 +1,7 @@
-package com.example.cronogame.Database.Repositories
+package com.example.cronogame.database.Repositories
 
-import com.example.cronogame.Database.dao.CategoryDao
-import com.example.cronogame.Database.entities.Category
+import com.example.cronogame.database.dao.CategoryDao
+import com.example.cronogame.database.entities.Category
 
 class CategoryRepository(private val categoryDao: CategoryDao) {
     suspend fun insertCategory(category: Category) {

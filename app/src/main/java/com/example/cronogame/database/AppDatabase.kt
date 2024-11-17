@@ -1,13 +1,13 @@
-package com.example.cronogame.Database
+package com.example.cronogame.database
 
-import HistoricalEvent
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.cronogame.Database.dao.CategoryDao
-import com.example.cronogame.Database.dao.HistoricalEventDao
-import com.example.cronogame.Database.entities.Category
+import com.example.cronogame.database.dao.CategoryDao
+import com.example.cronogame.database.dao.HistoricalEventDao
+import com.example.cronogame.database.entities.Category
+import com.example.cronogame.database.entities.HistoricalEvent
 
 
 @Database(entities = [Category::class, HistoricalEvent::class], version = 1, exportSchema = true)
