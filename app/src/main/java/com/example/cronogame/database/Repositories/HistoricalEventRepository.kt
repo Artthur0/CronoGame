@@ -8,7 +8,8 @@ class HistoricalEventRepository(private val eventDao: HistoricalEventDao) {
         eventDao.insertEvent(event)
     }
 
-    suspend fun getEventsByCategory(categoryId: Int): List<HistoricalEvent> {
-        return eventDao.getEventsByCategory(categoryId)
+    suspend fun getEventsByCategory(categoryId: Int, limit: Int = 10): List<HistoricalEvent> {
+        return eventDao.getEventsByCategory(categoryId, limit)
     }
+
 }

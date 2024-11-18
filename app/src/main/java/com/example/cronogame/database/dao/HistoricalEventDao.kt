@@ -11,6 +11,6 @@ interface HistoricalEventDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEvent(event: HistoricalEvent)
 
-    @Query("SELECT * FROM historical_events WHERE categoryId = :categoryId ORDER BY year ASC")
-    suspend fun getEventsByCategory(categoryId: Int): List<HistoricalEvent>
+    @Query("SELECT * FROM historical_events WHERE categoryId = :categoryId ORDER BY RANDOM() LIMIT :limit")
+    suspend fun getEventsByCategory(categoryId: Int, limit: Int): List<HistoricalEvent>
 }
