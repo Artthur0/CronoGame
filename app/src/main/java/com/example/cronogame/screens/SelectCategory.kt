@@ -1,5 +1,6 @@
 package com.example.cronogame.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -40,12 +41,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.room.Room
 import com.example.cronogame.components.Category
 import com.example.cronogame.components.TopBar
 import com.example.cronogame.database.AppDatabase
+import com.example.cronogame.database.HistoricalDataViewModel
 import com.example.cronogame.database.entities.Category
+import com.example.cronogame.database.insertInitialData
 import com.example.cronogame.navigation.AppScreens
 
 
@@ -67,14 +71,18 @@ fun SelectCategory(navController: NavController) {
     // Cargar categorías desde la base de datos
     LaunchedEffect(Unit) {
         try {
+            // Obtén las categorías de la base de datos
             categories = database.categoryDao().getAllCategories()
         } catch (e: Exception) {
+            // En caso de error, asignar una lista vacía
             categories = emptyList()
         } finally {
+            // Dejar de mostrar el cargador
             isLoading = false
         }
     }
 
+    // Si está cargando, mostrar el CircularProgressIndicator
     if (isLoading) {
         Box(
             modifier = Modifier.fillMaxSize(),
@@ -83,6 +91,7 @@ fun SelectCategory(navController: NavController) {
             CircularProgressIndicator()
         }
     } else {
+        // Si ya se cargaron las categorías, mostrar la interfaz
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -100,6 +109,7 @@ fun SelectCategory(navController: NavController) {
                 )
             },
             content = { innerPadding ->
+                // El contenido principal
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -108,25 +118,32 @@ fun SelectCategory(navController: NavController) {
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    // Si no hay categorías, mostrar un mensaje
                     if (categories.isEmpty()) {
-                        Text("No hay categorías disponibles.", style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            text = "No hay categorías disponibles.",
+                            style = MaterialTheme.typography.titleMedium
+                        )
                     } else {
-                        Column(
+                        // Si hay categorías, mostrar una lista de botones
+                        LazyColumn(
                             verticalArrangement = Arrangement.spacedBy(8.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.fillMaxWidth()
                         ) {
-                            categories.forEach { category ->
+                            items(categories) { category ->
                                 Button(
                                     onClick = {
-                                        navController.navigate(
-                                            "game_screen/${category.id}"
-                                        )
+                                        navController.navigate("game_screen/${category.id}")
                                     },
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .height(48.dp)
                                 ) {
-                                    Text(text = category.name, style = MaterialTheme.typography.bodyLarge)
+                                    Text(
+                                        text = category.name,
+                                        style = MaterialTheme.typography.bodyLarge
+                                    )
                                 }
                             }
                         }
@@ -136,6 +153,7 @@ fun SelectCategory(navController: NavController) {
         )
     }
 }
+
 /*
 @Preview(showBackground = true)
 @Composable
