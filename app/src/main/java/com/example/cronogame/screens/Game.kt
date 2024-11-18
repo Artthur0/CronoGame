@@ -12,10 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.room.Room
+import com.example.cronogame.R
 import com.example.cronogame.components.DraggableCard
+import com.example.cronogame.components.TarjetaGlobal
 import com.example.cronogame.components.TimelineRow
 import com.example.cronogame.database.AppDatabase
 import com.example.cronogame.database.entities.HistoricalEvent
@@ -90,7 +93,7 @@ fun GameScreen(navController: NavController, categoryId: Int) {
                                     .background(Color(0xFF6A1B9A))
                                     .size(36.dp)
                             ) {
-                                IconButton(onClick = { /* Acción de pausa */ }) {
+                                IconButton(onClick = { navController.navigate(AppScreens.PauseScreen.route) }) {
                                     Icon(
                                         imageVector = Icons.Default.Send,
                                         contentDescription = "Pausa",

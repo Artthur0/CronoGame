@@ -71,7 +71,9 @@ fun HowToPlayScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "Este es un ejemplo de texto que describe cómo jugar.",
+                    text = "En este juego tendras que arrastrar las tarjetas que se te muestren en la pantalla y dependiendo" +
+                            " de cuando sucedio el evento tendras que dejarla atras o adelante de la tarjeta inicial " +
+                            "de la linea del tiempo que creara.",
                     fontSize = 18.sp,
                     modifier = Modifier.weight(1f)
                 )
