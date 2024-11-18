@@ -68,64 +68,58 @@ fun SelectCategory(navController: NavController) {
     var isLoading by remember { mutableStateOf(true) }
     var categories by remember { mutableStateOf(listOf<Category>()) }
 
+    // Color de fondo (mismo color que el TopBar)
+    val backgroundColor = Color(0xff73459f)
+
     // Cargar categorías desde la base de datos
     LaunchedEffect(Unit) {
         try {
-            // Obtén las categorías de la base de datos
             categories = database.categoryDao().getAllCategories()
         } catch (e: Exception) {
-            // En caso de error, asignar una lista vacía
             categories = emptyList()
         } finally {
-            // Dejar de mostrar el cargador
             isLoading = false
         }
     }
 
-    // Si está cargando, mostrar el CircularProgressIndicator
     if (isLoading) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(backgroundColor),
             contentAlignment = Alignment.Center
         ) {
-            CircularProgressIndicator()
+            CircularProgressIndicator(color = Color.White)
         }
     } else {
-        // Si ya se cargaron las categorías, mostrar la interfaz
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = "Selecciona una Categoría",
-                                color = MaterialTheme.colorScheme.onBackground
-                            )
-                        }
-                    }
+                TopBar(
+                    title = "Selecciona una categoría",
+                    buttonIcon = Icons.Default.ArrowBack,
+                    onButtonClick = { navController.navigate(AppScreens.HomeScreen.route) },
+                    backgroundColor = backgroundColor,
+                    iconColor = Color.White
                 )
             },
+            containerColor = backgroundColor, // Fondo del Scaffold
             content = { innerPadding ->
-                // El contenido principal
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(innerPadding)
-                        .padding(16.dp),
+                        .padding(16.dp)
+                        .background(backgroundColor), // Fondo de la columna
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    // Si no hay categorías, mostrar un mensaje
                     if (categories.isEmpty()) {
                         Text(
                             text = "No hay categorías disponibles.",
-                            style = MaterialTheme.typography.titleMedium
+                            style = MaterialTheme.typography.titleMedium,
+                            color = Color.White // Texto en blanco para mayor contraste
                         )
                     } else {
-                        // Si hay categorías, mostrar una lista de botones
                         LazyColumn(
                             verticalArrangement = Arrangement.spacedBy(8.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
@@ -138,11 +132,16 @@ fun SelectCategory(navController: NavController) {
                                     },
                                     modifier = Modifier
                                         .fillMaxWidth()
-                                        .height(48.dp)
+                                        .height(48.dp),
+                                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = backgroundColor
+                                    )
                                 ) {
                                     Text(
                                         text = category.name,
-                                        style = MaterialTheme.typography.bodyLarge
+                                        style = MaterialTheme.typography.bodyLarge,
+                                        color = backgroundColor // Texto con color del fondo
                                     )
                                 }
                             }
