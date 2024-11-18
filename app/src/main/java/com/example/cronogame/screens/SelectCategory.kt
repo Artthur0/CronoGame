@@ -92,7 +92,7 @@ fun SelectCategory(navController: NavController) {
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Text(
-                                text = "Selecciona una Categoría",
+                                text = "Selecciona una Categoríaa",
                                 color = MaterialTheme.colorScheme.onBackground
                             )
                         }
