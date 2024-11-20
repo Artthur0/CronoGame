@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.cronogame.database.entities.HistoricalEvent
 
 @Composable
-fun TimelineRow(timeline: List<HistoricalEvent>) {
+fun TimelineRow(timeline: List<com.example.cronogame.models.HistoricalEvent>) {
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
@@ -35,7 +35,7 @@ fun TimelineRow(timeline: List<HistoricalEvent>) {
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = event.eventName,
+                    text = event.name,
                     color = Color.White,
                     modifier = Modifier
                         .background(Color(0xff73459f))

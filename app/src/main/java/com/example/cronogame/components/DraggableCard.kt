@@ -1,14 +1,13 @@
 package com.example.cronogame.components
 
+import android.media.metrics.Event
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -21,7 +20,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cronogame.R
-import com.example.cronogame.database.entities.HistoricalEvent
+import com.example.cronogame.models.HistoricalEvent
 
 @Composable
 fun DraggableCard(event: HistoricalEvent, onDropped: (HistoricalEvent) -> Unit) {
@@ -44,8 +43,8 @@ fun DraggableCard(event: HistoricalEvent, onDropped: (HistoricalEvent) -> Unit) 
     ) {
         TarjetaGlobal(
             id = event.id.toString(),
-            imagenRes = R.drawable.ic_launcher_foreground, // Imagen del evento
-            texto = event.eventName,
+            imagenRes = R.drawable.ic_launcher_foreground,
+            texto = event.name,
             fecha = event.year.toString()
         )
 
@@ -56,6 +55,7 @@ fun DraggableCard(event: HistoricalEvent, onDropped: (HistoricalEvent) -> Unit) 
         }
     }
 }
+
 @Composable
 fun TarjetaGlobal(
     id: String,
@@ -73,7 +73,6 @@ fun TarjetaGlobal(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(16.dp)
         ) {
-
             Text(
                 text = "ID: $id",
                 fontSize = 12.sp,
@@ -114,9 +113,9 @@ fun TarjetaGlobal(
 @Composable
 fun PreviewTarjeta() {
     TarjetaGlobal(
-        id = "tarjeta_001",
+        id = "1",
         imagenRes = R.drawable.ic_launcher_foreground,
-        texto = "Texto de ejemplo",
-        fecha = "12/11/2024"
+        texto = "Evento histórico",
+        fecha = "1800"
     )
 }

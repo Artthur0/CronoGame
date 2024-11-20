@@ -9,11 +9,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.cronogame.models.CategoriesData
+import com.example.cronogame.models.HistoricalEvent
+import com.example.cronogame.navigation.AppScreens
 
 @Composable
 fun CategoryList(
-    categories: List<CategoriesData>,
+    categories: List<HistoricalEvent>,
     onCategoryClick: (String) -> Unit
 ) {
     Column(
@@ -30,20 +31,20 @@ fun CategoryList(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewCategoryList() {
-    val sampleCategories = listOf(
-        CategoriesData("Categoría 1"),
-        CategoriesData("Categoría 2"),
-        CategoriesData("Categoría 3")
-    )
-
-    CategoryList(
-        categories = sampleCategories,
-        onCategoryClick = { categoryName ->
-            // Aquí puedes manejar el clic en la categoría
-            println("Categoría seleccionada: $categoryName")
-        }
-    )
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PreviewCategoryList() {
+//    val sampleCategories = listOf(
+//        HistoricalEvent("Categoría 1"),
+//        HistoricalEvent("Categoría 2"),
+//        HistoricalEvent("Categoría 3")
+//    )
+//
+//    CategoryList(
+//        categories = sampleCategories,
+//        onCategoryClick = { categoryName ->
+//            // Aquí puedes manejar el clic en la categoría
+//            println("Categoría seleccionada: $categoryName")
+//        }
+//    )
+//}

@@ -38,8 +38,15 @@ fun AppNavigation(){
             SelectCategory(navController)
         }
         composable(route = AppScreens.SimpleGameScreen.route){
-            SimpleGameScreen(navController)
+            SimpleGameScreen(navController, categoryId = id)
         }
+//        composable(
+//            route = "game_screen/{categoryId}",
+//            arguments = listOf(navArgument("categoryId") { type = NavType.IntType })
+//        ) { backStackEntry ->
+//            val categoryId = backStackEntry.arguments?.getInt("categoryId") ?: 0
+//            SimpleGameScreen(navController = navController, categoryId = categoryId)
+//        }
 
     }
 }

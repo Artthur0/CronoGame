@@ -19,26 +19,30 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.cronogame.components.Category
 import com.example.cronogame.components.TopBar
+import com.example.cronogame.models.HistoricalEvent
+import com.example.cronogame.models.categoryEvents
 import com.example.cronogame.navigation.AppScreens
-
+import java.time.Year
 
 @Composable
 fun SelectCategory(navController: NavController) {
-    val categories =
-        listOf("Categoría 1", "Categoría 2", "Categoría 3", "Categoría 4", "Categoría 5")
+    // Extraemos las claves (categorías) de categoryEvents
+    val categoriesList = categoryEvents.keys.map { id ->
+        HistoricalEvent(id = id, name = "Categoría $id", year = 2024)  // Asignamos un año predeterminado
+    }
+
     Scaffold(
         topBar = {
             TopBar(
                 title = "Selecciona una categoría",
                 buttonIcon = Icons.Default.ArrowBack,
-                onButtonClick = { },
+                onButtonClick = { navController.popBackStack() },
                 backgroundColor = Color(0xff73459f),
                 iconColor = Color.White
             )
         },
         containerColor = Color(0xff73459f)
     ) { innerPadding ->
-
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -47,22 +51,22 @@ fun SelectCategory(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            items(categories) { category ->
+            items(categoriesList) { category ->
                 Category(
-                    text = category,
-                    onClick = { navController.navigate(AppScreens.GameScreen.route)},
+                    text = category.name,
+                    onClick = {
+                        navController.navigate("${AppScreens.SimpleGameScreen.route}/${category.id}")
+                    },
                     backgroundColor = Color(0xffFFC900),
                     textColor = Color.White
-
                 )
                 Spacer(modifier = Modifier.height(10.dp))
-
-
             }
         }
-
     }
 }
+
+
 /*
 @Preview(showBackground = true)
 @Composable
